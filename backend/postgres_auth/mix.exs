@@ -10,7 +10,9 @@ defmodule PostgresAuth.Mixfile do
     {:ecto, "~> 2.1"},
     {:poison, "~> 3.1.0"},
     {:ex_doc, ">= 0.0.0", only: :dev},
-    {:guardian, "~> 1.1.0"}
+    {:guardian, "~> 1.1.0"},
+    {:comeonin, "~> 4.1.1"},
+    {:bcrypt_elixir, "~> 1.0.8"}
   ]
 
   @aliases [

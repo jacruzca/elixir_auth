@@ -5,11 +5,11 @@ defmodule PostgresAuth.Accounts do
 
   def list_users, do: User.list()
 
-  def signup(attrs \\ %{}) do
+  def signup(%{} = attrs \\ %{}) do
     with {:ok, _} <- get_user_by_email(attrs),
          {:ok, user} <- create_user(attrs),
          {:ok, token} <- Session.create_session_token(user) do
-      {:ok, Session.new_session(user, token)}
+      {:ok, Session.new_session(User.serialize(user), token)}
     else
       {:error, reason} -> {:error, reason}
     end
